@@ -1,0 +1,55 @@
+<section class="panel">
+  <div class="list-header">
+    <h2>Daftar item</h2>
+    @if (items.length > 0) {
+      <button type="button" class="btn-ghost" (click)="clearAll.emit()">
+        Kosongkan daftar
+      </button>
+    }
+  </div>
+
+  @if (items.length === 0) {
+    <p class="empty-state">Belum ada item. Tambahkan item pertama di bawah.</p>
+  } @else {
+    <ul class="item-list">
+      @for (item of items; track item.id; let idx = $index) {
+        <li class="item-row">
+          <span class="item-index">{{ idx + 1 }}.</span>
+
+          <div class="item-info">
+            <div class="item-name">{{ item.name }}</div>
+            <div class="item-unit">{{ formatRupiah(item.price) }} per porsi</div>
+          </div>
+
+          <div class="qty-controls">
+            <button
+              type="button"
+              (click)="changeQty.emit({ id: item.id, delta: -1 })"
+              aria-label="Kurangi jumlah"
+            >
+              -
+            </button>
+            <span>{{ item.qty }}</span>
+            <button
+              type="button"
+              (click)="changeQty.emit({ id: item.id, delta: 1 })"
+              aria-label="Tambah jumlah"
+            >
+              +
+            </button>
+          </div>
+
+          <div class="item-subtotal">{{ formatRupiah(item.price * item.qty) }}</div>
+
+          <button
+            type="button"
+            class="btn-delete"
+            (click)="removeItem.emit(item.id)"
+          >
+            Hapus
+          </button>
+        </li>
+      }
+    </ul>
+  }
+</section>

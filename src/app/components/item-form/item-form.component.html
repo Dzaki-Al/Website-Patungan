@@ -1,0 +1,54 @@
+<section class="panel">
+  <form class="add-row" (ngSubmit)="onSubmit()">
+    <div class="field">
+      <label for="itemName">Nama item</label>
+      <input
+        id="itemName"
+        type="text"
+        placeholder="Contoh: Es kopi susu"
+        [(ngModel)]="itemName"
+        name="itemName"
+      />
+    </div>
+
+    <div class="field">
+      <label for="itemPrice">Harga</label>
+      <input
+        id="itemPrice"
+        type="number"
+        min="0"
+        placeholder="0"
+        [(ngModel)]="itemPrice"
+        name="itemPrice"
+      />
+    </div>
+
+    <button type="submit" class="btn-primary">Tambah</button>
+  </form>
+
+  <div class="settings-row">
+    <div class="field">
+      <label for="peopleCount">Jumlah orang</label>
+      <input
+        id="peopleCount"
+        type="number"
+        min="1"
+        [ngModel]="peopleCount"
+        (ngModelChange)="onPeopleChange($event)"
+        name="peopleCount"
+      />
+    </div>
+
+    <div class="field">
+      <label for="taxPercent">Pajak dan layanan (%)</label>
+      <input
+        id="taxPercent"
+        type="number"
+        min="0"
+        [ngModel]="taxPercent"
+        (ngModelChange)="onTaxChange($event)"
+        name="taxPercent"
+      />
+    </div>
+  </div>
+</section>

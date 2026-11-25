@@ -1,0 +1,24 @@
+<section class="panel summary">
+  <div class="summary-row">
+    <span>Subtotal</span>
+    <strong>{{ formatRupiah(subtotal) }}</strong>
+  </div>
+
+  <div class="summary-row">
+    <span>Pajak dan layanan ({{ taxPercent }}%)</span>
+    <strong>{{ formatRupiah(taxAmount) }}</strong>
+  </div>
+
+  <div class="summary-row total-row">
+    <span>Total</span>
+    <strong>{{ formatRupiah(grandTotal) }}</strong>
+  </div>
+
+  <div class="summary-row highlight-row">
+    <div>
+      <span>Per orang</span>
+      <span class="badge">Wajar</span>
+    </div>
+    <strong>{{ formatRupiah(perPerson) }}</strong>
+  </div>
+</section>

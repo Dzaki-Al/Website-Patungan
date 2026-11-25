@@ -1,0 +1,32 @@
+<main class="container">
+  <header class="header">
+    <h1>{{ eventTitle }}</h1>
+    <p>{{ eventSubtitle }}</p>
+  </header>
+
+  <app-item-list
+    [items]="items()"
+    (changeQty)="handleChangeQty($event)"
+    (removeItem)="handleRemoveItem($event)"
+    (clearAll)="handleClearAll()"
+  />
+
+  <div class="bottom-subtotal">
+    <span>Subtotal:</span>
+    <strong>Rp{{ subtotal().toLocaleString('id-ID') }}</strong>
+  </div>
+
+  <app-item-form
+    [peopleCount]="peopleCount()"
+    [taxPercent]="taxPercent()"
+    (peopleCountChange)="peopleCount.set($event)"
+    (taxPercentChange)="taxPercent.set($event)"
+    (addItem)="handleAddItem($event)"
+  />
+
+  <app-summary-card
+    [subtotal]="subtotal()"
+    [taxPercent]="taxPercent()"
+    [peopleCount]="peopleCount()"
+  />
+</main>
